@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import PhotoList from "./components/PhotoList";
 import Header from "./components/Header";
 import { useDrop } from "react-dnd";
-// import StagingArea from "./components/StagingArea";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -39,11 +38,11 @@ const App = () => {
   });
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="mx-auto p-4">
       <Header />
       <div className="flex">
-        <PhotoList photos={photos} />
-        {/* <StagingArea /> */}
+        <PhotoList className="flex-1 mr-4" photos={photos} />
+        {/* Album Generator */}
         <div
           ref={drop}
           className="flex-2 ml-4 container border border-dashed border-gray-500 p-4 bg-teal-400"
