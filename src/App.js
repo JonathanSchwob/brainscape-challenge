@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import PhotoList from "./components/PhotoList";
 import Header from "./components/Header";
 import { useDrop } from "react-dnd";
-import AlbumGenerator from "./components/AlbumGenerator";
+import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
