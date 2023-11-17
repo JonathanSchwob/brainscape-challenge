@@ -1,11 +1,18 @@
-import React from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-const GeneratorTextList = ({ selectedPhotos }) => {
+const GeneratorTextList = ({ selectedPhotos, removePhoto }) => {
   return (
     <div className="flex-1 mr-4">
-      <ol className="list-decimal pl-4">
+      <ol className="list-decimal text-xs sm:text-sm pl-4">
         {selectedPhotos.map((photo, index) => (
-          <li key={index}>{photo.title}</li>
+          <div className="flex items-end">
+            <li key={index} className="pr-1">
+              {photo.title}
+            </li>
+            <div className="cursor-pointer" onClick={() => removePhoto(index)}>
+              <FaRegTrashAlt />
+            </div>
+          </div>
         ))}
       </ol>
     </div>
