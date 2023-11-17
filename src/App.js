@@ -43,10 +43,10 @@ const App = () => {
   };
 
   return (
-    <div className="mx-auto p-4">
+    <div className="container mx-auto p-4">
       <Header />
       <div className="flex">
-        <PhotoList className="flex-1 mr-4" photos={photos} />
+        <PhotoList photos={photos} />
         <AlbumGenerator
           removePhoto={removeSelectedPhoto}
           selectedPhotos={selectedPhotos}

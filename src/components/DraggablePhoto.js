@@ -13,7 +13,7 @@ const DraggablePhoto = ({ photo }) => {
   return (
     <div
       ref={drag}
-      className={`aspect-w-1 aspect-h-1 hover:scale-105 relative cursor-move ${
+      className={`aspect-square hover:scale-105 relative cursor-move ${
         isDragging ? "opacity-50" : ""
       }`}
     >
