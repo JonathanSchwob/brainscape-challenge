@@ -3,7 +3,7 @@
 #### Drag and Drop Photo Album Generator
 
 \
-live hosted @ [brainscape-challenge-ten.vercel.app](brainscape-challenge-ten.vercel.app)
+live hosted @ [brainscape-challenge-ten.vercel.app](https://brainscape-challenge-ten.vercel.app)
 
 To run:
 `cd brainscape-challenge`
