@@ -7,7 +7,7 @@ const Header = () => {
       <h2 className="text-base mb-2">Photo Album Generator by Jon S.</h2>
       <h3 className="text-sm mb-3">
         <span className="text-base">&#9757;</span> Drag photos from the left to
-        the Album Generator box to build your album.
+        the Album Generator area to create your album.
       </h3>
     </>
   );
