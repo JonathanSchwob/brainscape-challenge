@@ -1,11 +1,11 @@
 import axios from "axios";
 import JSZip from "jszip";
-import { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { useDrop } from "react-dnd";
+import { useEffect, useState } from "react";
 import PhotoList from "./components/PhotoList/PhotoList";
 import Header from "./components/Header";
 import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
