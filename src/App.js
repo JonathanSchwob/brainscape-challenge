@@ -1,6 +1,6 @@
 import axios from "axios";
 import JSZip from "jszip";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDrop } from "react-dnd";
 import PhotoList from "./components/PhotoList/PhotoList";
 import Header from "./components/Header";
@@ -9,6 +9,8 @@ import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
+  // const [page, setPage] = useState(1);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
