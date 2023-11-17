@@ -44,6 +44,7 @@ const App = () => {
   };
 
   const downloadPhotosAsZip = async () => {
+    if (selectedPhotos.length === 0) return;
     const zip = new JSZip();
 
     // Create a folder in the zip file
