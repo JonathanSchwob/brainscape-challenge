@@ -1,3 +1,5 @@
+import React from "react";
+
 const GeneratorPhotoList = ({ selectedPhotos, removePhoto }) => {
   return (
     <div className="flex-1 grid grid-cols-3 gap-2 mr-5">

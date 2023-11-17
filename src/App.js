@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PhotoList from "./components/PhotoList";
+import PhotoList from "./components/PhotoList/PhotoList";
 import Header from "./components/Header";
 import { useDrop } from "react-dnd";
 import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
@@ -43,7 +43,7 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="mx-auto p-4">
       <Header />
       <div className="flex">
         <PhotoList photos={photos} />
