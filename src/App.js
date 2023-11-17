@@ -5,6 +5,7 @@ import { useDrop } from "react-dnd";
 import PhotoList from "./components/PhotoList/PhotoList";
 import Header from "./components/Header";
 import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -20,7 +21,7 @@ const App = () => {
       // Make a GET request to the API endpoint
       const response = await axios.get(
         // todo: add pagination and decrease limit
-        `https://api.slingacademy.com/v1/sample-data/photos?limit=100`
+        `https://api.slingacademy.com/v1/sample-data/photos?offset=${offset}&limit=20`
       );
       // Update the state with the fetched data
       setPhotos((prevPhotos) => [...prevPhotos, ...response.data.photos]);
@@ -90,7 +91,15 @@ const App = () => {
     <div className="mx-auto p-4">
       <Header />
       <div className="flex">
-        <PhotoList photos={photos} />
+        <InfiniteScroll
+          dataLength={photos.length}
+          next={fetchData}
+          hasMore={true}
+          loader={<p>Loading...</p>}
+          endMessage={<p>No more images.</p>}
+        >
+          <PhotoList photos={photos} />
+        </InfiniteScroll>
         <AlbumGenerator
           removePhoto={removeSelectedPhoto}
           selectedPhotos={selectedPhotos}
