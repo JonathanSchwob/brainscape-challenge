@@ -17,7 +17,7 @@ const AlbumGenerator = ({ selectedPhotos, removePhoto, drop, download }) => {
           className={`bg-blue-500 hover:bg-blue-700 text-white text-xs font-bold ml-4 py-1 px-2 rounded lg:py-2 lg:px-4 ${disableButton}`}
           onClick={download}
         >
-          Download album
+          Download
         </button>
       </div>
       <div className="flex flex-col lg:flex-row items-start">

@@ -9,25 +9,31 @@ import AlbumGenerator from "./components/AlbumGenerator/AlbumGenerator";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
-  // const [page, setPage] = useState(1);
-  // const [loading, setLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      // Make a GET request to the API endpoint
+      const response = await axios.get(
+        // todo: add pagination and decrease limit
+        `https://api.slingacademy.com/v1/sample-data/photos?limit=100`
+      );
+      // Update the state with the fetched data
+      setPhotos((prevPhotos) => [...prevPhotos, ...response.data.photos]);
+      setOffset((prevOffset) => prevOffset + 20);
+    } catch (error) {
+      // Handle error if the request fails
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Make a GET request to the API endpoint
-        const response = await axios.get(
-          // todo: add pagination and decrease limit
-          "https://api.slingacademy.com/v1/sample-data/photos?limit=100"
-        );
-        // Update the state with the fetched data
-        setPhotos(response.data.photos);
-      } catch (error) {
-        // Handle error if the request fails
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
   }, []);
 
