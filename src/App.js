@@ -1,6 +1,6 @@
 import axios from "axios";
 import JSZip from "jszip";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import PhotoList from "./components/PhotoList/PhotoList";
 import Header from "./components/Header";
@@ -10,27 +10,25 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedPhotos, setSelectedPhotos] = useState([]);
+  const [totalAPIPhotos, setTotalAPIPhotos] = useState(null);
   const [offset, setOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const fetchData = async () => {
-    setIsLoading(true);
-    setError(null);
     try {
       // Make a GET request to the API endpoint
       const response = await axios.get(
-        // todo: add pagination and decrease limit
-        `https://api.slingacademy.com/v1/sample-data/photos?offset=${offset}&limit=20`
+        `https://api.slingacademy.com/v1/sample-data/photos?offset=${offset}&limit=25`
       );
-      // Update the state with the fetched data
+      // Get total number of API photos to know when to set end of photos message.
+      if (offset === 0) {
+        setTotalAPIPhotos(response.data.total_photos);
+      }
+      // Append the state with the fetched photos
       setPhotos((prevPhotos) => [...prevPhotos, ...response.data.photos]);
-      setOffset((prevOffset) => prevOffset + 20);
+      setOffset((prevOffset) => prevOffset + 25);
     } catch (error) {
       // Handle error if the request fails
-      setError(error);
-    } finally {
-      setIsLoading(false);
+      console.error(error);
     }
   };
 
@@ -94,9 +92,9 @@ const App = () => {
         <InfiniteScroll
           dataLength={photos.length}
           next={fetchData}
-          hasMore={true}
-          loader={<p>Loading...</p>}
-          endMessage={<p>No more images.</p>}
+          hasMore={offset === 0 || offset < totalAPIPhotos}
+          loader={<p className="animate-pulse">Loading...</p>}
+          endMessage={<p>No more photos.</p>}
         >
           <PhotoList photos={photos} />
         </InfiniteScroll>

@@ -8,8 +8,6 @@ import { HTML5toTouch } from "rdndmb-html5-to-touch";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <DndProvider options={HTML5toTouch}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </DndProvider>
 );
