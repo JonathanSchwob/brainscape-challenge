@@ -21,6 +21,7 @@ const DraggablePhoto = ({ photo }) => {
         src={photo.url}
         alt={photo.title}
         className="object-cover w-full h-full"
+        loading="lazy"
       />
     </div>
   );

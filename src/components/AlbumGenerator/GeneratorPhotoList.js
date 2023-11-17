@@ -10,6 +10,7 @@ const GeneratorPhotoList = ({ selectedPhotos, removePhoto }) => {
             src={photo.url}
             alt={photo.title}
             className="object-cover w-full h-full cursor-pointer"
+            loading="lazy"
           />
         </div>
       ))}
