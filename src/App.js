@@ -18,8 +18,6 @@ const App = () => {
           "https://api.slingacademy.com/v1/sample-data/photos?limit=100"
         );
         // Update the state with the fetched data
-        // todo: remove all logs
-        console.log(response);
         setPhotos(response.data.photos);
       } catch (error) {
         // Handle error if the request fails
@@ -38,8 +36,10 @@ const App = () => {
     },
   });
 
-  const removeSelectedPhoto = () => {
-    console.log("hello");
+  const removeSelectedPhoto = (index) => {
+    const updatedSelectedPhotos = [...selectedPhotos];
+    updatedSelectedPhotos.splice(index, 1);
+    setSelectedPhotos(updatedSelectedPhotos);
   };
 
   return (
@@ -47,7 +47,11 @@ const App = () => {
       <Header />
       <div className="flex">
         <PhotoList className="flex-1 mr-4" photos={photos} />
-        <AlbumGenerator selectedPhotos={selectedPhotos} drop={drop} />
+        <AlbumGenerator
+          removePhoto={removeSelectedPhoto}
+          selectedPhotos={selectedPhotos}
+          drop={drop}
+        />
       </div>
     </div>
   );
