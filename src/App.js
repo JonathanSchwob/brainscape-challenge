@@ -37,6 +37,12 @@ const App = () => {
     },
   });
 
+  const removeSelectedPhoto = (index) => {
+    const updatedSelectedPhotos = [...selectedPhotos];
+    updatedSelectedPhotos.splice(index, 1);
+    setSelectedPhotos(updatedSelectedPhotos);
+  };
+
   const downloadPhotosAsZip = async () => {
     const zip = new JSZip();
 
@@ -69,12 +75,6 @@ const App = () => {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-  };
-
-  const removeSelectedPhoto = (index) => {
-    const updatedSelectedPhotos = [...selectedPhotos];
-    updatedSelectedPhotos.splice(index, 1);
-    setSelectedPhotos(updatedSelectedPhotos);
   };
 
   return (
