@@ -5,7 +5,7 @@
 \
 live hosted @ [brainscape-challenge-ten.vercel.app](https://brainscape-challenge-ten.vercel.app)
 
-To run:
-`cd brainscape-challenge`
+To run:\
+`cd brainscape-challenge`\
 `npm i`\
 `npm run start`
