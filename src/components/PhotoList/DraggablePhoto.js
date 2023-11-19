@@ -22,6 +22,7 @@ const DraggablePhoto = ({ photo }) => {
         alt={photo.title}
         className="object-cover w-full h-full"
         loading="lazy"
+        crossOrigin="anonymous"
       />
     </li>
   );

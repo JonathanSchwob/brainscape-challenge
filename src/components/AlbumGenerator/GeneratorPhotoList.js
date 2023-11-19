@@ -11,6 +11,7 @@ const GeneratorPhotoList = ({ selectedPhotos, removePhoto }) => {
             alt={photo.title}
             className="object-cover w-full h-full cursor-pointer"
             loading="lazy"
+            crossOrigin="anonymous"
           />
         </div>
       ))}
